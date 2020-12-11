@@ -1,4 +1,4 @@
-ThisBuild / organization := "no.arktekk.sbt"
+ThisBuild / organization := "nl.marktplaats.sbt"
 
 ThisBuild / description := "Deploy in SBT using Sonatype Aether"
 

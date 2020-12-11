@@ -17,22 +17,23 @@ ThisBuild / packageOptions += {
   )
 }
 
-ThisBuild / credentials += Credentials(Path.userHome / ".sbt" / "arktekk-credentials")
+ThisBuild / credentials += Credentials(Path.userHome / ".sbt" / ".credentials")
 
 ThisBuild / pomIncludeRepository := { x =>
   false
 }
 
 ThisBuild / publishTo := {
+  val nexus = "https://nexus.es.ecg.tools/nexus/"
   if (version.value.trim().endsWith("SNAPSHOT")) {
-    Some(Opts.resolver.sonatypeSnapshots)
+    Some("mobilede.snapshots" at nexus + "repository/hosted-mp-snapshots/")
   } else {
-    Some(Opts.resolver.sonatypeStaging)
+    Some("mobilede.releases" at nexus + "repository/hosted-mp-releases/")
   }
 }
 
 // Things we care about primarily because Maven Central demands them
-ThisBuild / homepage := Some(new URL("http://github.com/arktekk/sbt-aether-deploy/"))
+ThisBuild / homepage := Some(new URL("http://github.com/ptab/sbt-aether-deploy/"))
 
 ThisBuild / startYear := Some(2012)
 
@@ -40,9 +41,9 @@ ThisBuild / licenses := Seq(("Apache 2", new URL("http://www.apache.org/licenses
 
 ThisBuild / scmInfo := Some(
   ScmInfo(
-    new URL("http://github.com/arktekk/sbt-aether-deploy"),
-    "scm:git:git://github.com/arktekk/sbt-aether-deploy.git",
-    Some("scm:git:git@github.com:arktekk/sbt-aether-deploy.git")
+    new URL("http://github.com/ptab/sbt-aether-deploy"),
+    "scm:git:git://github.com/ptab/sbt-aether-deploy.git",
+    Some("scm:git:git@github.com:ptab/sbt-aether-deploy.git")
   )
 )
 
